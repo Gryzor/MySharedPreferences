@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         title = "Activity 1"
+
+        // Obtain our private Shared Preferences (this comes from ContextWrapper, which an Activity is)
         val sharedPreferences = getSharedPreferences("sample", Context.MODE_PRIVATE)
 
         // restore existing value
@@ -30,10 +32,13 @@ class MainActivity : AppCompatActivity() {
                 0
             }
 
+            // Save the current value
             sharedPreferences.edit().putInt("A_NUMBER", value).apply()
 
+            // ... and go to the next activity
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

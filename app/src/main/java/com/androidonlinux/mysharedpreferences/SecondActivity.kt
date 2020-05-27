@@ -15,7 +15,6 @@ class SecondActivity : AppCompatActivity() {
         title = "Activity 2"
         val sharedPreferences = getSharedPreferences("sample", Context.MODE_PRIVATE)
 
-        // restore existing value
         val current = sharedPreferences.getInt("A_NUMBER", 0)
         editText.setText("$current")
 
@@ -30,8 +29,9 @@ class SecondActivity : AppCompatActivity() {
 
             sharedPreferences.edit().putInt("A_NUMBER", value).apply()
 
-            val intent = Intent(this, SecondActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
     }
